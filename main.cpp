@@ -5,7 +5,11 @@ int main()
     //settings for antialiasing
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
+
+    //window
     sf::RenderWindow window(sf::VideoMode(250, 250), "SFML works!", sf::Style::Default, settings);
+
+    //creates circle
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -18,6 +22,7 @@ int main()
                 window.close();
         }
 
+        //draws and window init
         window.clear();
         window.draw(shape);
         window.display();
