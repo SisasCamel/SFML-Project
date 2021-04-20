@@ -53,9 +53,6 @@ int main()
                 std::cout << radius << " ";
                 shape.setRadius(radius++);
             }
-        else if(radius > 300){
-            window.draw();
-        }
             if(outlineThick != 35){
                 shape.setOutlineThickness(outlineThick++);
             }
