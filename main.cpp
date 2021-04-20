@@ -16,7 +16,7 @@ int main()
     colora = (rand() % 255) - 32;
     int i = 0;
     int radius = 100;
-
+    bool reduce = false;
     //settings for antialiasing
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
@@ -49,9 +49,19 @@ int main()
         i++;
         if(i%10 == 0){
             shape.setPosition(0.0f, 0.0f);
-            if(i%3 == 0 && radius < 300){
+            if(i%3 == 0 && radius < 300 && !reduce){
                 std::cout << radius << " ";
                 shape.setRadius(radius++);
+            }
+            else if(i%3 == 0 && radius >= 300){
+                reduce = true;
+            }
+            if(i%3 == 0 && reduce){
+                shape.setRadius(radius--);
+                shape.setFillColor(sf::Color(colora, colorb--, colorc));
+                if(radius == 100){
+                    reduce = false;
+                }
             }
             if(outlineThick != 35){
                 shape.setOutlineThickness(outlineThick++);
