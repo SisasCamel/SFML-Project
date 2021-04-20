@@ -17,14 +17,14 @@ int main()
     int i = 0;
     int radius = 100;
     bool reduce = false;
+    float outlineThick = 10.0f;
+    int colorcount = 0;
+
     //settings for antialiasing
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-
-    float outlineThick = 10.0f;
-
     //window
-    sf::RenderWindow window(sf::VideoMode(250, 250), "SFML works!", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(500, 500), "SFML works!", sf::Style::Default, settings);
 
     //creates circle
     sf::CircleShape shape(125.f);
@@ -49,22 +49,24 @@ int main()
         i++;
         if(i%10 == 0){
             shape.setPosition(0.0f, 0.0f);
-            if(i%3 == 0 && radius < 300 && !reduce){
-                std::cout << radius << " ";
+            if(i%3 == 0 && radius < 240 && !reduce){
                 shape.setRadius(radius++);
             }
-            else if(i%3 == 0 && radius >= 300){
+            else if(i%3 == 0 && radius >= 240){
                 reduce = true;
             }
             if(i%3 == 0 && reduce){
                 shape.setRadius(radius--);
-                shape.setFillColor(sf::Color(colora, colorb--, colorc));
+                if(colorcount == 0){
+                    shape.setFillColor(sf::Color(colora, colorb--, colorc));
+                }
+                else if(colorcount >= 1){
+                    shape.setFillColor(sf::Color(colora--, colorb--, colorc++));
+                }
                 if(radius == 100){
                     reduce = false;
+                    colorcount++;
                 }
-            }
-            if(outlineThick != 35){
-                shape.setOutlineThickness(outlineThick++);
             }
             shape.setOutlineColor(sf::Color(colora--, colorb, colorc));
         }
