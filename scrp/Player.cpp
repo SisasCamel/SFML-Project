@@ -48,8 +48,6 @@ void Player::updateInput(){
 void Player::update(sf::RenderTarget* target){
     // Window bounds Collision
     
-    
-    
     this->updateInput();
 }
 
