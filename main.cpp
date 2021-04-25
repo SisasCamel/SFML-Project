@@ -1,4 +1,4 @@
-#include <scrp/Game.h>
+#include "scrp/Game.cpp"
 #include <iostream>
 
 int main()
