@@ -1,5 +1,4 @@
 #include "scrp/Game.cpp"
-#include <iostream>
 
 int main()
 {

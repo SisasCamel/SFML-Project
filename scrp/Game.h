@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include "stdafx.h"
 #include "Player.cpp"
 
 // Acts as the game engine
@@ -16,7 +16,7 @@ private:
     sf::VideoMode videoMode;
     sf::Event e;
 
-    Player player;
+    Player* player;
 
     //Mouse Positions
     sf::Vector2i mousePosWindow;
@@ -28,6 +28,7 @@ private:
     void initVariables();
     void initWindow();
     void initEnemies();
+    void initPlayer();
 
 public:
     // Constructor / Destructor
@@ -39,9 +40,12 @@ public:
 
     // Functions
     void pollEvents();
+    void updatePlayer();
     void updateMousePositions();
     void update();
+    void renderPlayer();
     void render();
+    const sf::RenderWindow& getWindow() const;
 
 };
 

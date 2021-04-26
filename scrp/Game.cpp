@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "stdafx.h"
 
 
 // Private Functions
@@ -13,6 +14,11 @@ void Game::initWindow(){
     this -> window = new sf::RenderWindow(this -> videoMode, "My Window", sf::Style::Titlebar | sf::Style::Close, settings);
     this -> window -> setFramerateLimit(120);
 }
+
+//Initializes player
+void Game::initPlayer(){
+    this->player = new Player();
+}
 void Game::initEnemies(){
 
 }
@@ -22,10 +28,12 @@ Game::Game(){
     this -> initVariables();
     this -> initWindow();
     this -> initEnemies();
+    this -> initPlayer();
 }
 
 Game::~Game(){
     delete this -> window;
+    delete this -> player;
 }
 
 // Accessors
@@ -62,16 +70,31 @@ void Game::updateMousePositions(){
     this->mousePosWindow = sf::Mouse::getPosition(*this->window);
 }
 
+//Updates player, includes textures, etc
+void Game::updatePlayer(){
+    this->player->update();
+}
+
 void Game::update(){
     this -> updateMousePositions();
     this -> pollEvents();
-    this -> player.update(this->window);
+    this -> updatePlayer();
+}
+
+//renders the player, we don't need to type "this->player->render(this->window);" everytime
+void Game::renderPlayer(){
+    this->player->render(this->window);
 }
 
 void Game::render(){
     this -> window->clear();
 
+    //calls renderplayer
+    this->renderPlayer();
     // Display
-    this -> player.render(this->window);
     this -> window -> display();
+}
+const sf::RenderWindow& Game::getWindow() const
+{
+    return *this->window;
 }

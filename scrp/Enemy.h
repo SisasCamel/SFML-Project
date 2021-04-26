@@ -3,7 +3,6 @@
 class Enemy{
 private:
 
-
 public:
     Enemy();
     ~Enemy();

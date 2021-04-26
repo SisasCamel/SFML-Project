@@ -3,7 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${default}"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,6 +11,9 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.18362.0",
+            "forcedInclude": [
+                "${workspaceFolder}/scrp/stdafx.h"
+            ],
             "compilerPath": "D:/Visual Studio/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
